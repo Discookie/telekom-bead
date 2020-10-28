@@ -1,0 +1,1 @@
+import zlib;from base64 import*;exec(zlib.decompress(b85decode("{{code}}")))

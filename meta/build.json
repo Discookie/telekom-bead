@@ -1,0 +1,20 @@
+{
+    "debug-opt": 5,
+    "release-opt": 8,
+    "files": [
+        {
+            "path": "client.py",
+            "args": [],
+            "variables": [],
+            "aliases": {},
+            "disallow": []
+        },
+        {
+            "path": "server.py",
+            "args": [],
+            "variables": [],
+            "aliases": {},
+            "disallow": []
+        }
+    ]
+}
