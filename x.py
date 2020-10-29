@@ -279,20 +279,20 @@ def save(show_help: bool):
 
 def main():
     parser = argparse.ArgumentParser(description="Build framework")
-    parser.add_argument("subcommand", default="help", nargs="+", choices=["help", "build", "run", "clean", "pack", "save"])
+    parser.add_argument("subcommand", default="help", choices=["help", "build", "run", "clean", "pack", "save"])
 
     if sys.argv[0] == "x.py":
         sysargs = sys.argv[1:]
     else:
         sysargs = sys.argv
 
-    args = parser.parse_args(sysargs)
+    args = parser.parse_args(sysargs[:1])
 
-    show_help = args.subcommand[0] == "help"
+    show_help = args.subcommand == "help"
     if show_help and len(sysargs) > 1:
         subcommand = sysargs[1]
     else:
-        subcommand = args.subcommand[0]
+        subcommand = args.subcommand
 
     if subcommand == "build": build(show_help)
     elif subcommand == "run": run(show_help)
