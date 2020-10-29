@@ -4,7 +4,6 @@ from random import*
 from select import*
 from sys import*
 with socket()as main_socket:
- print(argv)
  main_socket.bind((argv[1],int(argv[-1])))
  main_socket.listen()
  socket_list=[main_socket]
@@ -18,7 +17,7 @@ with socket()as main_socket:
     if new_recv:
      received_num,received_char=unpack("is",new_recv)
      if b"="==received_char:
-      if guess_number-received_num:new_socket.send(b"K")
+      if guess_number-received_num:new_socket.send(b"K");socket_list.remove(new_socket)
       else:
        for socket_item in socket_list[1:]:socket_item.send(b"Y"if socket_item==new_socket else b"V");socket_list.remove(socket_item)
      else:new_socket.send(b"N"if("<"==received_char)==(guess_number<received_num)else b"I")
