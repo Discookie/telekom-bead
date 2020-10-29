@@ -5,16 +5,26 @@
         {
             "path": "server.py",
             "args": ["127.0.0.1", "4000"],
-            "variables": ["main_socket","guess_number","socket_list","readable","new_socket"],
+            "variables": [
+                "main_socket",
+                "guess_number",
+                "socket_list",
+                "readable",
+                "new_socket"
+            ],
             "aliases": {},
             "disallow": []
         },
         {
             "path": "client.py",
             "args": ["127.0.0.1", "4000"],
-            "variables": ["main_socket", "length", "numbers"],
+            "variables": [
+                "main_socket",
+                "numbers",
+                "length"
+            ],
             "aliases": {},
-            "disallow": []
+            "disallow": [[0, 1], [0, 2], [1, 2]]
         }
     ]
 }
