@@ -3,16 +3,16 @@
     "release-opt": 8,
     "files": [
         {
-            "path": "client.py",
-            "args": [],
-            "variables": [],
+            "path": "server.py",
+            "args": ["127.0.0.1", "4000"],
+            "variables": ["main_socket","guess_number","socket_list","readable","new_socket"],
             "aliases": {},
             "disallow": []
         },
         {
-            "path": "server.py",
-            "args": [],
-            "variables": [],
+            "path": "client.py",
+            "args": ["127.0.0.1", "4000"],
+            "variables": ["main_socket", "length", "numbers"],
             "aliases": {},
             "disallow": []
         }
