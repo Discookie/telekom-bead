@@ -3,6 +3,7 @@ import zlib
 import base64
 import itertools
 import operator
+import re
 import time
 import multiprocessing as mp
 
@@ -17,8 +18,13 @@ def find_chars_thread(
     best_combinations = []
     iteration = -start
 
-    for src, tgt in aliases.items():
-        code = code.replace(src, tgt)
+    # Substitute aliases first
+    if aliases:
+        alias_regex = re.compile("|".join(aliases.keys()))
+        code = alias_regex.sub(lambda m: aliases[m.group(0)], code)
+
+    # We can reuse the variable name regex
+    char_regex = re.compile("|".join(variables))
 
     for chars in itertools.product(used_chars, repeat=len(variables)):
         iteration += 1
@@ -30,9 +36,9 @@ def find_chars_thread(
 
         if not all([chars[l] != chars[r] for l, r in excluded]): continue
 
-        new_code = code
-        for src, tgt in zip(variables, chars):
-            new_code = new_code.replace(src, tgt)
+        # Substitute new var names
+        char_dict = dict(zip(variables, chars))
+        new_code = char_regex.sub(lambda m: char_dict[m.group(0)], code)
 
         result = len(base64.b85encode(zlib.compress(str.encode(new_code), 9)))
 
@@ -59,6 +65,9 @@ def find_chars(
     for c in counted_code:
         if c in chars:
             chars[c] += 1
+
+    if not variables:
+        return len(code), [], []
     
     chars_sorted = sorted([k for k, v in sorted(chars.items(), key=operator.itemgetter(1), reverse=True)][:difficulty])
 
