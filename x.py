@@ -1,5 +1,5 @@
 import argparse
-from os import path, remove, rmdir
+from os import path, mkdir
 import subprocess
 import sys
 import json
@@ -32,6 +32,9 @@ def _build(difficulty: Union[int, bool], thread_count: int, is_silent: bool, bui
         files_to_build = [file for file in build_params.get("files", []) if file["path"] in build_files]
 
     file_sizes: Dict[str, int] = {}
+
+    if not path.exists("build/"):
+        mkdir("build/")
 
     for file in files_to_build:
         if "path" not in file:
@@ -155,7 +158,7 @@ def build(show_help: bool):
     parser.add_argument("--release", action='store_true')
     parser.add_argument("-o", "--opt-difficulty", type=int, default=0)
     parser.add_argument("-f", "--files", nargs="*", default=None)
-    parser.add_argument("-c", "--threads", type=int, default=12)
+    parser.add_argument("-j", "--threads", type=int, default=12)
     parser.add_argument("-q", "--silent", action='store_true')
 
     if show_help:
