@@ -7,14 +7,14 @@
             "args": [],
             "variables": [],
             "aliases": {},
-            "disallow": []
+            "excluded": []
         },
         {
             "path": "server.py",
             "args": [],
             "variables": [],
             "aliases": {},
-            "disallow": []
+            "excluded": []
         }
     ]
 }
