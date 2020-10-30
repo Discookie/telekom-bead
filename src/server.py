@@ -6,7 +6,7 @@ from sys import*
 with socket()as main_socket:
  main_socket.bind((argv[1],int(argv[-1])));main_socket.listen();socket_list=[main_socket]
  while socket_list:
-  readable=select(socket_list,(),())[0]
+  readable=select(socket_list,socket_list,socket_list)[0]
   for new_socket in readable:
    if socket_list[0]==new_socket:socket_list+=new_socket.accept()[:1];guess_number=guess_number if socket_list[2:]else randint(1,100);continue
    new_recv=new_socket.recv(5)
