@@ -1,6 +1,6 @@
 {
-    "debug-opt": 5,
-    "release-opt": 8,
+    "debug-opt": 7,
+    "release-opt": 9,
     "files": [
         {
             "path": "server.py",
