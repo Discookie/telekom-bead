@@ -9,11 +9,10 @@ with socket()as main_socket:
   readable=select(socket_list,socket_list,socket_list)[0]
   for new_socket in readable:
    if socket_list[0]==new_socket:socket_list+=new_socket.accept()[:1];guess_number=guess_number if socket_list[2:]else randint(1,100);continue
-   new_recv=new_socket.recv(5)
+   new_recv=bytearray(new_socket.recv(5))
    if new_recv:
-    received_num,received_char=unpack("is",new_recv)
-    if received_char==b"=":
-     if received_num-guess_number:new_socket.send(b"K");socket_list.remove(new_socket);continue
-     for socket_item in socket_list[1:]:socket_item.send(b"Y"if socket_item==new_socket else b"V");socket_list.remove(socket_item)
-    else:new_socket.send(b"N"if("<"==received_char)==(guess_number<received_num)else b"I")
+    if new_recv[:1]==b"=":
+     if new_recv[1]-guess_number:new_recv[:1]=b"K";new_socket.send(new_recv);socket_list.remove(new_socket);continue
+     for socket_item in socket_list[1:]:new_recv[0]=b"VY"[socket_item==new_socket];socket_item.send(new_recv);socket_list.remove(socket_item)
+    else:new_recv[0]=b"IN"[(new_recv[0]=="<")==(guess_number<new_recv[1])];new_socket.send(new_recv)
    else:socket_list.remove(new_socket)
