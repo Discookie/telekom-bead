@@ -1,4 +1,3 @@
-from struct import*
 from socket import*
 from random import*
 from select import*
