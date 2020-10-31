@@ -1,6 +1,6 @@
 {
-    "debug-opt": 7,
-    "release-opt": 9,
+    "debug-opt": 8,
+    "release-opt": 11,
     "files": [
         {
             "path": "client.py",
