@@ -1,7 +1,5 @@
-from struct import*
 from socket import*
 from sys import*
-import time
 with socket()as main_socket:
  main_socket.connect((argv[1],int(argv[-1])))
  numbers=range(1,101)
