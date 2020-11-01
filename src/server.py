@@ -5,7 +5,7 @@ with socket()as main_socket:
   readable=select(socket_list,socket_list,socket_list)[0]
   for new_socket in readable:
    if socket_list[0]==new_socket:
-    if not socket_list[1:]:guess_number=randint(1,100)
+    if socket_list[:1]==socket_list:guess_number=randint(1,100)
     socket_list+=new_socket.accept()[:1];continue
    new_recv=bytearray(new_socket.recv(5))
    if new_recv[:1]==b"=":
