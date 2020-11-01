@@ -1,16 +1,13 @@
-from socket import*
-from random import*
-from select import*
-from sys import*
-with socket()as main_socket:
- main_socket.bind((argv[1],int(argv[2])))
+import socket,select,random,sys
+with socket.socket()as main_socket:
+ main_socket.bind((sys.argv[1],int(sys.argv[2])))
  main_socket.listen()
  socket_list=[main_socket]
  while socket_list:
-  readable=select(socket_list,socket_list,socket_list)[0]
+  readable=select.select(socket_list,socket_list,socket_list)[0]
   for new_socket in readable:
    if socket_list[0]==new_socket:
-    if socket_list[:1]==socket_list:guess_number=randint(1,100)
+    if socket_list[:1]==socket_list:guess_number=random.randint(1,100)
     socket_list+=new_socket.accept()[:1]
     continue
    new_recv=list(new_socket.recv(5))
