@@ -18,8 +18,8 @@ with socket()as main_socket:
     socket_list.remove(new_socket)
     new_recv[0]=b"KY"[new_recv[1]==guess_number]
     if new_recv[1]==guess_number:
-     for socket_item in socket_list[1:]:socket_item.send(b"V]==b")
-     socket_list=socket_list[:1]
-   elif new_recv:new_recv[0]=b"NI"[[new_recv[1]<guess_number,new_recv[1]>guess_number][new_recv[0]==60]]
+     for socket_item in socket_list[1:]:socket_item.send(b"V0]=b")
+     socket_list[1:]=()
+   elif new_recv:new_recv[0]=b"NI"[(new_recv[1]>guess_number,new_recv[1]<guess_number)[new_recv[0]==61]]
    else:socket_list.remove(new_socket)
    new_socket.send(bytes(new_recv))
