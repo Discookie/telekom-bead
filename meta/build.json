@@ -21,7 +21,8 @@
                                 [3, 4], [3, 5], [3, 6],
                                         [4, 5],
                                                 [5, 6]
-            ]
+            ],
+            "template": "template_server.py"
         },
         {
             "path": "client.py",

@@ -1,4 +1,4 @@
-import socket,select,random,sys
+import socket,random,sys
 with socket.socket()as main_socket:
  main_socket.bind((sys.argv[1],int(sys.argv[2])))
  main_socket.listen()
