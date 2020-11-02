@@ -82,7 +82,11 @@ def _build(difficulty: Union[int, bool], thread_count: int, is_silent: bool, bui
             print("Step 1 complete", file=sys.stderr)
 
         # Step 2: Preprocess and template code
-        with open("preprocess/template.py", "rb") as f:
+        if "template" in file:
+            template = file["template"]
+        else:
+            template = "template.py"
+        with open("preprocess/" + template, "rb") as f:
             step_2_template = f.read()
 
         step_2_compressed_code = preprocess(step_1, step_1_list[0])
