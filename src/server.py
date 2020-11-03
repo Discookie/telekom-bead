@@ -15,7 +15,7 @@ with socket.socket()as main_socket:
      new_recv[0]=b"KY"[new_recv[4]==guess_number]
      socket_list.remove(new_socket)
      if new_recv[4]==guess_number:
-      for socket_item in socket_list[1:]:socket_item.send(b"V      b")
+      for socket_item in socket_list[1:]:socket_item.send(b"V new_recv[0]=b")
       socket_list[1:]=()
     elif new_recv:new_recv[0]=b"NI"[[new_recv[4]<guess_number,new_recv[4]>guess_number][new_recv[0]==60]]
     else:socket_list.remove(new_socket)
