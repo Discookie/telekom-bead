@@ -10,8 +10,7 @@ with socket.socket()as main_socket:
     if socket_list[:1]==socket_list:guess_number=random.randint(1,100)
     socket_list+=[new_socket.accept()[0]]
    else:
-    new_recv=list(new_socket.recv(16))
-    print(new_recv)
+    new_recv=list(new_socket.recv(5))
     if new_recv[:1]==[61]:
      new_recv[0]=b"KY"[new_recv[-1]==guess_number]
      socket_list.remove(new_socket)
@@ -20,5 +19,4 @@ with socket.socket()as main_socket:
       socket_list[1:]=()
     elif new_recv:new_recv[0]=b"NI"[[new_recv[-1]<guess_number,new_recv[-1]>guess_number][new_recv[0]==60]]
     else:socket_list.remove(new_socket)
-    print(new_recv)
     new_socket.send(bytes(new_recv))
