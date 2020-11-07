@@ -288,10 +288,7 @@ def main():
     parser = argparse.ArgumentParser(description="Build framework")
     parser.add_argument("subcommand", default="help", choices=["help", "build", "run", "clean", "pack", "save"])
 
-    if sys.argv[0] == "x.py":
-        sysargs = sys.argv[1:]
-    else:
-        sysargs = sys.argv
+    sysargs = sys.argv[1:]
 
     args = parser.parse_args(sysargs[:1])
 
