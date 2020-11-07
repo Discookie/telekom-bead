@@ -3,14 +3,21 @@
     "release-opt": 11,
     "files": [
         {
-            "path": "client.py",
+            "path": "netcopy_srv.py",
             "args": [],
             "variables": [],
             "aliases": {},
             "excluded": []
         },
         {
-            "path": "server.py",
+            "path": "checksum_srv.py",
+            "args": [],
+            "variables": [],
+            "aliases": {},
+            "excluded": []
+        },
+        {
+            "path": "netcopy_cli.py",
             "args": [],
             "variables": [],
             "aliases": {},
