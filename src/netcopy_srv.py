@@ -5,9 +5,7 @@ with socket.socket()as main_socket:
  cli_socket=main_socket.accept()[0]
  md5_processor=hashlib.md5()
  with open(sys.argv[-1],"wb")as out_file:
-  while new_recv:=cli_socket.recv(1000):
-   out_file.write(new_recv)
-   md5_processor.update(new_recv)
+  while out_file.write(new_recv:=cli_socket.recv(1000)):md5_processor.update(new_recv)
 with socket.socket()as checksum_socket:
  checksum_socket.connect((sys.argv[3],int(sys.argv[-3])))
  checksum_socket.send(b"KI|"+sys.argv[-2].encode())
