@@ -1,8 +1,6 @@
 import socket,time,sys
 with socket.socket()as main_socket:
- main_socket.bind((sys.argv[1],int(sys.argv[2])))
- main_socket.listen()
- checksum_list={}
+ checksum_list=dict();main_socket.bind((sys.argv[1],int(sys.argv[2])));main_socket.listen()
  while new_socket:=main_socket.accept()[0]:
   while new_recv:=new_socket.recv(100):
    split_string=new_recv.split(b"|")
